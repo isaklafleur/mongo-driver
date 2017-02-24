@@ -6,7 +6,10 @@ const app = express();
 
 //mongoose.Promise = require('bluebird');
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/mongo-driver');
+
+if (process.env.NODE_ENV !== 'test') {
+    mongoose.connect('mongodb://localhost/mongo-driver');
+}
 
 app.use(bodyParser.json());
 routes(app);
