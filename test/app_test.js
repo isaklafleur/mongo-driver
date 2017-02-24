@@ -3,13 +3,13 @@ const request = require('supertest');
 const app = require('../app');
 
 describe('The express app', () => {
-	it('handles a GET request to /api', (done) => {
-		request(app)
+    it('handles a GET request to /api', (done) => {
+        request(app)
         .get('/api')
         .end((err, response) => {
-			//console.log(response.body);
-			assert(response.body.hi === 'there');
-			done();
-		});
-	});
+            //console.log(response.body);
+            assert(response.body.hi === 'there');
+            done();
+        });
+    });
 });
