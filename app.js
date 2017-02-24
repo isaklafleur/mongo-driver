@@ -12,6 +12,14 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 app.use(bodyParser.json());
+
+// Routes
 routes(app);
+
+// Middleware err, req, res are objects. next is a function
+app.use((err, req, res, next) => {
+    //console.log(err);
+    res.status(422).send({ error: err.message });
+});
 
 module.exports = app;
