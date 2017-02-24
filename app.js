@@ -4,9 +4,6 @@ const mongoose = require('mongoose');
 const routes = require('./routes/routes');
 const app = express();
 
-//mongoose.Promise = require('bluebird');
-mongoose.Promise = global.Promise;
-
 if (process.env.NODE_ENV !== 'test') {
     mongoose.connect('mongodb://localhost/mongo-driver');
 }
@@ -17,7 +14,7 @@ app.use(bodyParser.json());
 routes(app);
 
 // Middleware err, req, res are objects. next is a function
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     //console.log(err);
     res.status(422).send({ error: err.message });
 });
