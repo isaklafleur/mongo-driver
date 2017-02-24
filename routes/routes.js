@@ -6,4 +6,5 @@ module.exports = (app) => {
     app.get('/api', DriversController.greeting);
     // Route, create a new driver with POST method
     app.post('/api/drivers', DriversController.create);
+    app.put('/api/drivers/:id', DriversController.edit);
 };
