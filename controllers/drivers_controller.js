@@ -1,3 +1,5 @@
+const Driver = require('../models/drivers');
+
 module.exports = {
     /* ES 5
     greeting: function(req,res) {
@@ -8,8 +10,13 @@ module.exports = {
     greeting(req, res) {
         res.send({ hi: 'there' });
     },
-    create(req, res) {
 
+    create(req, res) {
+        //console.log(req.body);
+        const driverProps = req.body;
+
+        Driver.create(driverProps)
+        .then(driver => res.send(driver));
     }
 };
 
