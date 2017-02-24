@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 routes(app);
 
 // Middleware err, req, res are objects. next is a function
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
     //console.log(err);
     res.status(422).send({ error: err.message });
 });
